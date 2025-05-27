@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    jcr:primaryType="cq:Dialog"
+    title="Banner Component"
+    xtype="dialog"
+    helpPath="en/cq/current/wcm/default_components.html#banner">
+
+    <items jcr:primaryType="cq:WidgetCollection">
+        <bannerTitle
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Banner Title"
+            name="./bannerTitle"
+            xtype="textfield"/>
+        <bannerDescription
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Banner Description"
+            name="./bannerDescription"
+            xtype="textarea"/>
+        <bannerImage
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Banner Image"
+            name="./bannerImage"
+            xtype="pathfield"
+            rootPath="/content/dam"/>
+        <bannerButtonText
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Button Text"
+            name="./bannerButtonText"
+            xtype="textfield"/>
+    </items>
+</jcr:root>

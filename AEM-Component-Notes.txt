@@ -1,0 +1,6 @@
+This folder contains conceptual AEM component snippets for the banner section of the marketing website project.
+
+- banner_component.html : HTL template for the banner.
+- banner_dialog.xml : Dialog XML for author editable fields.
+
+These snippets show how static HTML/CSS content can be converted into dynamic AEM components.
