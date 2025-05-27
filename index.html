@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketing Landing Page</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+     <nav class="top-nav">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="darkModeToggle">🌙 Dark Mode</button>
+      
+  <!-- Hero Banner Section -->
+  <section id="hero" class="hero-banner">
+    <div class="hero-content">
+      <h1>Boost Your Business with Our Digital Marketing</h1>
+      <p>Scale your brand online with high-performance campaigns.</p>
+      <a href="#products" class="cta-button">Get Started</a>
+    </div>
+  </section>
+  <!-- Product Details Section -->
+<section id="products" class="product-section">
+    <h2>Our Services</h2>
+    <div class="product-cards">
+      <div class="card">
+        <h3>SEO Optimization</h3>
+        <p>Improve your website’s ranking and visibility on search engines.</p>
+      </div>
+      <div class="card">
+        <h3>Social Media Marketing</h3>
+        <p>Engage with your audience across platforms like Facebook, Instagram, and LinkedIn.</p>
+      </div>
+      <div class="card">
+        <h3>Email Campaigns</h3>
+        <p>Reach your customers directly with targeted and personalized emails.</p>
+      </div>
+    </div>
+  </section>
+  <!-- Testimonials Section -->
+<section id="testimonials" class="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial">
+        <p>"Their digital strategies doubled our web traffic in just 3 months!"</p>
+        <h4>- Ramesh, CEO of StartupX</h4>
+      </div>
+      <div class="testimonial">
+        <p>"Very responsive team and great results from the campaign."</p>
+        <h4>- Priya, Marketing Head at EduWorld</h4>
+      </div>
+      <div class="testimonial">
+        <p>"Highly recommend them for any brand looking to grow digitally."</p>
+        <h4>- Anil, Founder of TrendStore</h4>
+      </div>
+    </div>
+    <button id="prevBtn">‹</button>
+  <button id="nextBtn">›</button>
+  </section>
+  
+  <!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <form class="contact-form">
+      <input type="text" name="name" id="name" placeholder="Your Name" required />
+      <input type="email" name="email" id="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p id="formMessage" style="color: green;"></p>
+  </section>
+    <!-- Footer Section -->
+      <footer class="site-footer">
+        <p>&copy; 2025 Digital Marketing Solutions. All rights reserved.</p>
+      </footer>
+     <script>
+         // Enable smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth"
+            });
+          });
+        });
+      </script>
+      <script>
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+          e.preventDefault(); // stop actual form submission
+      
+          // Get form values
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const message = document.getElementById("message").value.trim();
+          const messageDisplay = document.getElementById("formMessage");
+      
+          // Validate fields
+          if (name === "" || email === "" || message === "") {
+            messageDisplay.textContent = "Please fill out all fields.";
+            messageDisplay.style.color = "red";
+            return;
+          }
+      
+          if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+            messageDisplay.textContent = "Please enter a valid email address.";
+            messageDisplay.style.color = "red";
+            return;
+          }
+      
+          // If valid
+          messageDisplay.textContent = "Message sent successfully!";
+          messageDisplay.style.color = "green";
+      
+          // Optionally clear form
+          document.getElementById("contactForm").reset();
+        });
+      </script>
+      <script>
+        const toggleBtn = document.getElementById("darkModeToggle");
+        toggleBtn.addEventListener("click", () => {
+          document.body.classList.toggle("dark-mode");
+      
+          if(document.body.classList.contains("dark-mode")) {
+            toggleBtn.textContent = "☀️ Light Mode";
+          } else {
+            toggleBtn.textContent = "🌙 Dark Mode";
+          }
+        });
+      </script>
+      <script>
+        const testimonials = document.querySelectorAll(".testimonial");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        let currentIndex = 0;
+      
+        function showTestimonial(index) {
+          testimonials.forEach((t, i) => {
+            t.classList.toggle("active", i === index);
+          });
+        }
+      
+        prevBtn.addEventListener("click", () => {
+          currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+          showTestimonial(currentIndex);
+        });
+      
+        nextBtn.addEventListener("click", () => {
+          currentIndex = (currentIndex + 1) % testimonials.length;
+          showTestimonial(currentIndex);
+        });
+      
+        // Initialize
+        showTestimonial(currentIndex);
+      </script>
+      
+
+</body>
+</html>
